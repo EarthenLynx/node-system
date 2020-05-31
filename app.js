@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const logger = require("./middleware/logger");
 
 // Initialize the routes and the application
-const routerTodo = require("./routes/api/todo");
+const routerSystem = require("./routes/api/system");
 const app = express();
 
 // Initialize the middleware
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // });
 
 // Configure the routes
-app.use("/todo", routerTodo);
+app.use("/system", routerSystem);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
