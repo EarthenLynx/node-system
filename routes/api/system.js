@@ -1,7 +1,7 @@
 // Import needed modules
 const express = require("express");
-const getSystem = require("../../controller/getsystem");
-const getProcess = require("../../controller/getprocess");
+const getSystem = require("../../controller/system/getsystem");
+const getProcess = require("../../controller/system/getprocess");
 
 // Setup the router
 var router = express.Router();

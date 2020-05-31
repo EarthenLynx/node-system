@@ -24,12 +24,6 @@ const os = require("os");
  */
 
 const GET_SYSTEM = async (req, res) => {
-  const node_process = await {
-    id: process.ppid,
-    user: process.env.USERNAME,
-    cpu_usage: process.cpuUsage(),
-  };
-
   const node_os = await {
     platform: os.platform(),
     arch: os.arch(),
@@ -40,7 +34,12 @@ const GET_SYSTEM = async (req, res) => {
     hostname: os.hostname(),
     network: os.networkInterfaces(),
   };
-
+  
+  const node_process = await {
+    id: process.ppid,
+    user: process.env.USERNAME,
+    cpu_usage: process.cpuUsage(),
+  };
 
   const node_system = await {
     node_os,
