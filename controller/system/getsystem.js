@@ -11,7 +11,7 @@ const os = require("os");
  * 1: Process
  * process.ppid             The ID of the node process
  * process.env.USERNAME     Owner of node process
- * cpu_usage                user and system cpu usage
+ * cpu_usage()              User's and system's cpu usage
  *
  * 2: OS Module
  * arch()                   op - system CPU Architecture
@@ -46,7 +46,7 @@ const GET_SYSTEM = async (req, res) => {
     node_process,
   };
 
-  await res.send(node_system);
+  await res.send(JSON.stringify(node_system));
 };
 
 module.exports = GET_SYSTEM;

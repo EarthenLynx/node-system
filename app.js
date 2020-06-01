@@ -8,6 +8,7 @@ const logger = require("./middleware/logger");
 
 // Initialize the routes and the application
 const routerSystem = require("./routes/api/system");
+const routerMashine = require("./routes/api/mashine");
 const app = express();
 
 // Initialize the middleware
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Configure the routes
 app.use("/system", routerSystem);
+app.use("/mashine", routerMashine);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -13,7 +13,7 @@ router.get("/", function (req, res, next) {
 
 router.get("/process", (req, res, next) => {
   getProcess(req, res); 
-})
+});
 
 // When receiving the post request, save the file in the temp folder
 // router.post("/upload", (req, res, next) => {
