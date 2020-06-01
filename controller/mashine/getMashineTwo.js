@@ -10,7 +10,7 @@ const GET_MASHINE_TWO = async (req, res) => {
       "Moldings",
       "192.168.2.102"
     );
-    await res.send(mashine_two);
+    await res.status(401).send(mashine_two);
   } else {
     await res.send({
       status: "Authorization Error",

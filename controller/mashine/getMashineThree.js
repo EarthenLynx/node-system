@@ -11,7 +11,7 @@ const GET_MASHINE_THREE = async (req, res) => {
       "192.168.2.103"
     );
 
-    await res.send(mashine_three);
+    await res.status(401).send(mashine_three);
   } else {
     await res.send({
       status: "Authorization Error",
