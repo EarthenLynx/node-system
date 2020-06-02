@@ -9,14 +9,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
         <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; } body {font-family: 'Roboto', sans-serif;}
-blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left-color: #293133;} blockquote a {color: #a2a2a2}
+blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left-color: #293133;} blockquote a {color: #a2a2a2} 
 </style>
         <style>
             body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
                 font-size: 14px;
                 line-height: 1.6;
             }
@@ -26,22 +25,74 @@ blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left
         
     </head>
     <body class="vscode-light">
-        <h1 id="test-your-api-skills">Test your API skills</h1>
+        <!-- body {font-family: 'Roboto', sans-serif;}
+blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left-color: #293133;} blockquote a {color: #a2a2a2} -->
+<h1 id="test-your-api-skills">Test your API skills</h1>
 <p><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Faltametrics.com%2Fassets%2Fimages%2Fdevelopers%2Fapi-library-banner-670x200.png&amp;f=1&amp;nofb=1" alt=""></p>
-<p>This app contains several routes you can target that return mocked mashine data. You can find an example of the json - structure they return below this description.</p>
-<p>Each of the routes is protected by <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">basic authentication</a>, means you will need to set the headers of your request before fetching data.</p>
+<h3 id="welcome-to-system-one-this-app-contains-several-routes-you-can-target-that-return-mocked-mashine-data-you-can-also-read-a-few-lines-on-http---requests-in-general-with-a-focus-on-methods-to-send-data-back-and-forth">Welcome to system one! This app contains several routes you can target that return mocked mashine data. You can also read a few lines on http - requests in general with a focus on methods to send data back and forth.</h3>
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>The Hyper Text Transfer Protocol ( HTTP ) is, in a nutshell, a collection of methods to send data back and forth on the internet. You will often find this type of methods in a Client - Server architecture, where the Client is usually the web browser and the Server is either a Mashine with a server software, like Apache or Nginx, running PHP, Java, C# or, as in this case, a Node instance behind a reverse proxy. Whenever a user decides to send data to the browser, he makes a <strong>request</strong> and then receives a <strong>response</strong> from the server. Understanding how the sending and receiving of data works is the goal of this training website.</p>
+<h3 id="the-most-common-http-methods-on-the-web-are">The most common http methods on the web are:</h3>
+<blockquote>
+<p>POST (Create), GET (Read), PUT | PATCH (Update), DELETE (Delete)</p>
+</blockquote>
+<p>This website is hosted on a domain that points towards its unique URL. When developing server side software, one often refers to this URL as the <strong>Base URL</strong> or, as a synonyme, <strong>Root URL</strong>. The Root URL for this application is the same you can find in your browsers URL field, namely <a href="https://system-status-one.herokuapp.com/">https://system-status-one.herokuapp.com/</a>.</p>
+<p>This website, however, does not only consist of its base URL, but of several Sub - URLs, too. These are often referred to as <strong>Routes</strong>. A route, in a nutshell, is what comes behind the backslash of the Base URL. Within this application, returns either html, such as this document you're reading right now, or <strong>JSON</strong>, as you will see in the following example. JSON stands for Javascript Object Notation. JSON data reads very similiar to standard Javascript Objects, but has a few differences to it.</p>
+<ul>
+<li>JSON parameter keys always have quotation marks</li>
+<li>JSON parameter values cannot be functions, but only Strings, Numbers and Booleans, as well as Arrays or Objects containing these.</li>
+<li>Also, JSON does neither have Methods, nor does it have a Prototype. It's just data</li>
+</ul>
+<h3 id="route-structure">Route Structure</h3>
+<p>To target the routes shown below, you can just place them in your browser's url field and hit enter. Then, your browser ( client ) will make a GET - request to the app ( server ) and write the raw data into your browser window. Note, however, that each of the routes that return JSON is protected by <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">basic authentication</a>, means you will need to set the headers of your request before fetching data.</p>
 <blockquote>
 <p>Basic authentication is the simplest technique for enforcing access controls, because [...] HTTP Basic authentication uses standard fields in the http - header</p>
 </blockquote>
-<h2 id="requirements">Requirements</h2>
-<p>In case you are unfamiliar with Javascript and / or JSON, you can find a few links below to get you started. Knowing of Javascript is not mandatory, but will definitely make things easier on the long run. Having a basic understanding of http and JSON is, however, needed to comeplete the tasks below.</p>
+<p>That's also what you will do below in the tasks yourself. Basic authentication is very commonly used and usually needs to be supported by TLS or SSL ( That's what makes http<strong>s(ecure)</strong>).</p>
 <blockquote>
-<p><a href="http://jsforcats.com/">Javascript for cats</a> is a good tutorial to get started with the basics. For a more structured approach to the syntax, you might as well try <a href="https://www.w3schools.com/js/">W3School's JS course</a> and the <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON Intro</a></p>
+<p>TLS and SSL offer a layer of encrpytion on the communication stream between the server and the client.</p>
+</blockquote>
+<h4 id="base-url">Base URL:</h4>
+<pre><code class="language-sh"><div>$ GET https://system-status-one.herokuapp.com/
+</div></code></pre>
+<h4 id="route-for-mashine-1-data"><strong>Route for Mashine 1 data</strong></h4>
+<pre><code class="language-sh"><div>$ GET https://system-status-one.herokuapp.com/mashine/one
+</div></code></pre>
+<h4 id="route-for-mashine-2-data"><strong>Route for Mashine 2 data</strong></h4>
+<pre><code class="language-sh"><div>$ GET https://system-status-one.herokuapp.com/mashine/two
+</div></code></pre>
+<h4 id="route-for-mashine-3-data"><strong>Route for Mashine 3 data</strong></h4>
+<pre><code class="language-sh"><div>$ GET https://system-status-one.herokuapp.com/mashine/three
+</div></code></pre>
+<h4 id="response-without-authentication">Response without authentication</h4>
+<pre><code class="language-json"><div>{
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Authorization Error"</span>,
+  <span class="hljs-attr">"statusMsg"</span>: <span class="hljs-string">"You are not authorized for this operation"</span>
+}
+</div></code></pre>
+<h4 id="response-with-correct-authentication">Response with correct authentication</h4>
+<pre><code class="language-json"><div>{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Mashine 1"</span>,
+  <span class="hljs-attr">"adress"</span>: <span class="hljs-string">"192.168.2.101"</span>,
+  <span class="hljs-attr">"produces"</span>: <span class="hljs-string">"Hinges"</span>,
+  <span class="hljs-attr">"qtyToday"</span>: <span class="hljs-number">2519</span>,
+  <span class="hljs-attr">"qtyWeek"</span>: <span class="hljs-number">17636</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Ok"</span>,
+  <span class="hljs-attr">"statusMsg"</span>: <span class="hljs-string">"Mashine Mashine 1 is up and running."</span>,
+  <span class="hljs-attr">"lastAct"</span>: <span class="hljs-string">"Tue Jun 02 2020 11:17:30 GMT+0200 (GMT+02:00)"</span>
+}
+</div></code></pre>
+<hr>
+<h2 id="requirements-for-the-tasks-below">Requirements for the tasks below</h2>
+<p>In case you are unfamiliar with Javascript and / or JSON, you can find a few links below to get you started. Knowing of Javascript is not mandatory, but will definitely make things easier on the long run. Having a basic understanding of http and JSON is, however, needed to easily complete the tasks below. Therefor, check out these links:</p>
+<blockquote>
+<p><a href="http://jsforcats.com/">Javascript for cats</a> is a good tutorial to get started with the basics. For a more structured approach to the syntax, you might as well try <a href="https://www.w3schools.com/js/">W3School's JS course</a> and the <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON Intro</a>. Also, do check out <a href="https://www.w3schools.com/whatis/whatis_http.asp">W3Schools HTTP Tutorial</a></p>
 </blockquote>
 <hr>
 <h2 id="tasks-to-do">Tasks to do</h2>
 <ol>
-<li>Use <a href="https://www.postman.com/">Postman</a> to connect to all three API endpoints shown below ( without authentication )</li>
+<li>Use <a href="https://www.postman.com/">Postman</a> to connect to all three API endpoints shown above @Route Structure ( without authentication )</li>
 </ol>
 <blockquote>
 <p>If you are unfamiliar with Postman, <a href="https://www.youtube.com/watch?v=juldrxDrSH0&amp;list=PLhW3qG5bs-L-oT0GenwPLcJAPD_SiFK3C">you can find a very good series on Youtube here</a> that takes you from installation until mastering the app.</p>
@@ -69,96 +120,15 @@ blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left
 </li>
 </ol>
 <hr>
-<h2 id="api-routes-for-mashine-data">API Routes for mashine data</h2>
-<p><strong>Mashine 1</strong></p>
-<pre><code class="language-sh"><div>$ GET [THIS_APP_DOMAIN].herokuapp.com/mashine/one
+<h1 id="much-success-i-hope-youll-take-away-a-few-lessons-learned-from-this-website-as-you-go-ahead">Much success! I hope you'll take away a few lessons learned from this website as you go ahead.</h1>
+<p>Hints on Task 5:</p>
+<ul>
+<li>On Node.js, use the Axios client to make requests.</li>
+</ul>
+<pre><code class="language-sh"><div>npm install axios
 </div></code></pre>
-<p><strong>Mashine 2</strong></p>
-<pre><code class="language-sh"><div>$ GET [THIS_APP_DOMAIN].herokuapp.com/mashine/two
-</div></code></pre>
-<p><strong>Mashine 3</strong></p>
-<pre><code class="language-sh"><div>$ GET [THIS_APP_DOMAIN].herokuapp.com/mashine/three
-</div></code></pre>
-<h2 id="example-code-to-send-an-http---request-with-nodejs-to-mashine-1">Example code to send an http - request with node.js to mashine 1</h2>
-<pre><code class="language-javascript"><div><span class="hljs-keyword">var</span> https = <span class="hljs-built_in">require</span>(<span class="hljs-string">'follow-redirects'</span>).https;
-<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
-
-<span class="hljs-keyword">var</span> options = {
-  <span class="hljs-string">'method'</span>: <span class="hljs-string">'GET'</span>,
-  <span class="hljs-string">'hostname'</span>: <span class="hljs-string">'[THIS_APP_DOMAIN]'</span>,
-  <span class="hljs-string">'port'</span>: <span class="hljs-number">3000</span>,
-  <span class="hljs-string">'path'</span>: <span class="hljs-string">'/mashine/one'</span>,
-  <span class="hljs-string">'headers'</span>: {
-    <span class="hljs-string">'Authorization'</span>: <span class="hljs-string">'[MY_BASE_64_ENCODED_STRING]'</span>
-  },
-  <span class="hljs-string">'maxRedirects'</span>: <span class="hljs-number">20</span>
-};
-
-<span class="hljs-keyword">var</span> req = https.request(options, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span>{
-  <span class="hljs-keyword">var</span> chunks = [];
-
-  res.on(<span class="hljs-string">"data"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chunk</span>) </span>{
-    chunks.push(chunk);
-  });
-
-  res.on(<span class="hljs-string">"end"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chunk</span>) </span>{
-    <span class="hljs-keyword">var</span> body = Buffer.concat(chunks);
-    <span class="hljs-built_in">console</span>.log(body.toString());
-  });
-
-  res.on(<span class="hljs-string">"error"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
-    <span class="hljs-built_in">console</span>.error(error);
-  });
-});
-
-req.end();
-</div></code></pre>
-<h2 id="example-response-from-mashine-1">Example response from Mashine 1</h2>
-<pre><code class="language-json"><div>{
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Mashine 1"</span>,
-  <span class="hljs-attr">"adress"</span>: <span class="hljs-string">"192.168.2.101"</span>,
-  <span class="hljs-attr">"produces"</span>: <span class="hljs-string">"Hinges"</span>,
-  <span class="hljs-attr">"qtyToday"</span>: <span class="hljs-number">14940</span>,
-  <span class="hljs-attr">"qtyWeek"</span>: <span class="hljs-number">104598</span>,
-  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Ok"</span>,
-  <span class="hljs-attr">"statusMsg"</span>: <span class="hljs-string">"Mashine Mashine 1 is up and running."</span>,
-  <span class="hljs-attr">"lastAct"</span>: <span class="hljs-string">"2020-06-01T16:42:00.330Z"</span>
-}
-</div></code></pre>
-<h2 id="example-response-for-the-custom-api-built-in-step-5">Example response for the custom API built in step 5</h2>
-<pre><code class="language-json"><div>[
-  {
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Mashine 1"</span>,
-    <span class="hljs-attr">"adress"</span>: <span class="hljs-string">"192.168.2.101"</span>,
-    <span class="hljs-attr">"produces"</span>: <span class="hljs-string">"Hinges"</span>,
-    <span class="hljs-attr">"qtyToday"</span>: <span class="hljs-number">14940</span>,
-    <span class="hljs-attr">"qtyWeek"</span>: <span class="hljs-number">104598</span>,
-    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Ok"</span>,
-    <span class="hljs-attr">"statusMsg"</span>: <span class="hljs-string">"Mashine Mashine 1 is up and running."</span>,
-    <span class="hljs-attr">"lastAct"</span>: <span class="hljs-string">"2020-06-01T16:42:00.330Z"</span>
-  },   
-  {
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Mashine 2"</span>,
-    <span class="hljs-attr">"adress"</span>: <span class="hljs-string">"192.168.2.102"</span>,
-    <span class="hljs-attr">"produces"</span>: <span class="hljs-string">"Hinges"</span>,
-    <span class="hljs-attr">"qtyToday"</span>: <span class="hljs-number">5220</span>,
-    <span class="hljs-attr">"qtyWeek"</span>: <span class="hljs-number">86598</span>,
-    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Ok"</span>,
-    <span class="hljs-attr">"statusMsg"</span>: <span class="hljs-string">"Mashine Mashine 2 is up and running."</span>,
-    <span class="hljs-attr">"lastAct"</span>: <span class="hljs-string">"2020-06-01T16:42:00.330Z"</span>
-  },   
-  {
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Mashine 1"</span>,
-    <span class="hljs-attr">"adress"</span>: <span class="hljs-string">"192.168.2.101"</span>,
-    <span class="hljs-attr">"produces"</span>: <span class="hljs-string">"Hinges"</span>,
-    <span class="hljs-attr">"qtyToday"</span>: <span class="hljs-number">940</span>,
-    <span class="hljs-attr">"qtyWeek"</span>: <span class="hljs-number">4023</span>,
-    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Ok"</span>,
-    <span class="hljs-attr">"statusMsg"</span>: <span class="hljs-string">"Mashine Mashine 3 is up and running."</span>,
-    <span class="hljs-attr">"lastAct"</span>: <span class="hljs-string">"2020-06-01T16:42:00.330Z"</span>
-  }
-]
-
+<p>Example of how to make a get - request with axios:</p>
+<pre><code class="language-javascript"><div>
 </div></code></pre>
 
     </body>
