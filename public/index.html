@@ -10,13 +10,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
         <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; } body {font-family: 'Roboto', sans-serif;}
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+body {font-family: 'Roboto', sans-serif;}
 blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left-color: #293133;} blockquote a {color: #a2a2a2} 
 </style>
         <style>
             body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
+                font-size: 16px;
                 line-height: 1.6;
             }
         </style>
@@ -128,7 +128,19 @@ blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left
 <pre><code class="language-sh"><div>npm install axios
 </div></code></pre>
 <p>Example of how to make a get - request with axios:</p>
-<pre><code class="language-javascript"><div>
+<pre><code class="language-javascript"><div><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">"axios"</span>); 
+
+<span class="hljs-keyword">const</span> baseUrl = <span class="hljs-string">"https://system-status-one.herokuapp.com/"</span>; 
+<span class="hljs-keyword">const</span> mashineRoute = <span class="hljs-string">"mashine/one"</span>
+
+axios.get(baseUrl + mashineRoute, {
+  <span class="hljs-comment">/*If you read this before doing the tasks above, try to figure out where this Authorization string comes from. */</span>
+  headers: {
+    <span class="hljs-string">"Authorization"</span>: <span class="hljs-string">"aGV0dGljaHVzZXI6d2VsY29tZTAx"</span> 
+  }
+})
+.then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(response.data))
+.catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(err.response.data));
 </div></code></pre>
 
     </body>
