@@ -4,7 +4,7 @@ const GET_MASHINE_ONE = (req, res, next) => {
   const base64 = req.get("Authorization");
   const auth = base64 ? Buffer.from(base64, "base64").toString("utf-8") : ""
 
-  if (base64 & auth === "hettichuser:welcome01") {
+  if (auth === "hettichuser:welcome01") {
     const mashine_one = new Mashine(
       "Mashine 1",
       "Hinges",

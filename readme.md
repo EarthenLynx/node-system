@@ -1,23 +1,95 @@
+<!-- body {font-family: 'Roboto', sans-serif;}
+blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left-color: #293133;} blockquote a {color: #a2a2a2} -->
 # Test your API skills
 ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Faltametrics.com%2Fassets%2Fimages%2Fdevelopers%2Fapi-library-banner-670x200.png&f=1&nofb=1)
 
-This app contains several routes you can target that return mocked mashine data. You can find an example of the json - structure they return below this description. 
+### Welcome to system one! This app contains several routes you can target that return mocked mashine data. You can also read a few lines on http - requests in general with a focus on methods to send data back and forth.
 
-Each of the routes is protected by [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), means you will need to set the headers of your request before fetching data. 
+---
+
+## Introduction
+
+The Hyper Text Transfer Protocol ( HTTP ) is, in a nutshell, a collection of methods to send data back and forth on the internet. You will often find this type of methods in a Client - Server architecture, where the Client is usually the web browser and the Server is either a Mashine with a server software, like Apache or Nginx, running PHP, Java, C# or, as in this case, a Node instance behind a reverse proxy. Whenever a user decides to send data to the browser, he makes a **request** and then receives a **response** from the server. Understanding how the sending and receiving of data works is the goal of this training website. 
+
+### The most common http methods on the web are: 
+> POST (Create), GET (Read), PUT | PATCH (Update), DELETE (Delete)
+
+This website is hosted on a domain that points towards its unique URL. When developing server side software, one often refers to this URL as the **Base URL** or, as a synonyme, **Root URL**. The Root URL for this application is the same you can find in your browsers URL field, namely https://system-status-one.herokuapp.com/.
+
+This website, however, does not only consist of its base URL, but of several Sub - URLs, too. These are often referred to as **Routes**. A route, in a nutshell, is what comes behind the backslash of the Base URL. Within this application, returns either html, such as this document you're reading right now, or **JSON**, as you will see in the following example. JSON stands for Javascript Object Notation. JSON data reads very similiar to standard Javascript Objects, but has a few differences to it. 
+
+- JSON parameter keys always have quotation marks
+- JSON parameter values cannot be functions, but only Strings, Numbers and Booleans, as well as Arrays or Objects containing these.
+- Also, JSON does neither have Methods, nor does it have a Prototype. It's just data
+
+### Route Structure
+
+To target the routes shown below, you can just place them in your browser's url field and hit enter. Then, your browser ( client ) will make a GET - request to the app ( server ) and write the raw data into your browser window. Note, however, that each of the routes that return JSON is protected by [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), means you will need to set the headers of your request before fetching data.
 
 > Basic authentication is the simplest technique for enforcing access controls, because [...] HTTP Basic authentication uses standard fields in the http - header
 
-## Requirements
+That's also what you will do below in the tasks yourself. Basic authentication is very commonly used and usually needs to be supported by TLS or SSL ( That's what makes http**s(ecure)**). 
 
-In case you are unfamiliar with Javascript and / or JSON, you can find a few links below to get you started. Knowing of Javascript is not mandatory, but will definitely make things easier on the long run. Having a basic understanding of http and JSON is, however, needed to comeplete the tasks below. 
+> TLS and SSL offer a layer of encrpytion on the communication stream between the server and the client.
 
-> [Javascript for cats](http://jsforcats.com/) is a good tutorial to get started with the basics. For a more structured approach to the syntax, you might as well try [W3School's JS course](https://www.w3schools.com/js/) and the [JSON Intro](https://www.w3schools.com/js/js_json_intro.asp)
+#### Base URL:
+
+```sh
+$ GET https://system-status-one.herokuapp.com/
+```
+
+#### **Route for Mashine 1 data**
+```sh
+$ GET https://system-status-one.herokuapp.com/mashine/one
+```
+
+#### **Route for Mashine 2 data**
+```sh
+$ GET https://system-status-one.herokuapp.com/mashine/two
+```
+
+#### **Route for Mashine 3 data**
+```sh
+$ GET https://system-status-one.herokuapp.com/mashine/three
+```
+
+#### Response without authentication
+
+```json
+{
+  "status": "Authorization Error",
+  "statusMsg": "You are not authorized for this operation"
+}
+```
+
+#### Response with correct authentication
+
+```json
+{
+  "name": "Mashine 1",
+  "adress": "192.168.2.101",
+  "produces": "Hinges",
+  "qtyToday": 2519,
+  "qtyWeek": 17636,
+  "status": "Ok",
+  "statusMsg": "Mashine Mashine 1 is up and running.",
+  "lastAct": "Tue Jun 02 2020 11:17:30 GMT+0200 (GMT+02:00)"
+}
+```
+
+---
+
+## Requirements for the tasks below
+
+In case you are unfamiliar with Javascript and / or JSON, you can find a few links below to get you started. Knowing of Javascript is not mandatory, but will definitely make things easier on the long run. Having a basic understanding of http and JSON is, however, needed to easily complete the tasks below. Therefor, check out these links:
+
+> [Javascript for cats](http://jsforcats.com/) is a good tutorial to get started with the basics. For a more structured approach to the syntax, you might as well try [W3School's JS course](https://www.w3schools.com/js/) and the [JSON Intro](https://www.w3schools.com/js/js_json_intro.asp). Also, do check out [W3Schools HTTP Tutorial](https://www.w3schools.com/whatis/whatis_http.asp)
 
 ---
 
 ## Tasks to do
 
-1. Use [Postman](https://www.postman.com/) to connect to all three API endpoints shown below ( without authentication )
+1. Use [Postman](https://www.postman.com/) to connect to all three API endpoints shown above @Route Structure ( without authentication )
 
 > If you are unfamiliar with Postman, [you can find a very good series on Youtube here](https://www.youtube.com/watch?v=juldrxDrSH0&list=PLhW3qG5bs-L-oT0GenwPLcJAPD_SiFK3C) that takes you from installation until mastering the app.
 
@@ -37,109 +109,18 @@ In case you are unfamiliar with Javascript and / or JSON, you can find a few lin
 
 ---
 
-## API Routes for mashine data
+# Much success! I hope you'll take away a few lessons learned from this website as you go ahead. 
 
-**Mashine 1**
+Hints on Task 5: 
+
+- On Node.js, use the Axios client to make requests.
+
 ```sh
-$ GET [THIS_APP_DOMAIN].herokuapp.com/mashine/one
+npm install axios
 ```
 
-**Mashine 2**
-```sh
-$ GET [THIS_APP_DOMAIN].herokuapp.com/mashine/two
-```
-
-**Mashine 3**
-```sh
-$ GET [THIS_APP_DOMAIN].herokuapp.com/mashine/three
-```
-
-## Example code to send an http - request with node.js to mashine 1
+Example of how to make a get - request with axios: 
 
 ```javascript
-var https = require('follow-redirects').https;
-var fs = require('fs');
-
-var options = {
-  'method': 'GET',
-  'hostname': '[THIS_APP_DOMAIN]',
-  'port': 3000,
-  'path': '/mashine/one',
-  'headers': {
-    'Authorization': '[MY_BASE_64_ENCODED_STRING]'
-  },
-  'maxRedirects': 20
-};
-
-var req = https.request(options, function (res) {
-  var chunks = [];
-
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
-
-  res.on("end", function (chunk) {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-
-  res.on("error", function (error) {
-    console.error(error);
-  });
-});
-
-req.end();
-```
-
-## Example response from Mashine 1
-
-```json
-{
-  "name": "Mashine 1",
-  "adress": "192.168.2.101",
-  "produces": "Hinges",
-  "qtyToday": 14940,
-  "qtyWeek": 104598,
-  "status": "Ok",
-  "statusMsg": "Mashine Mashine 1 is up and running.",
-  "lastAct": "2020-06-01T16:42:00.330Z"
-}
-```
-
-## Example response for the custom API built in step 5
-
-```json
-[
-  {
-    "name": "Mashine 1",
-    "adress": "192.168.2.101",
-    "produces": "Hinges",
-    "qtyToday": 14940,
-    "qtyWeek": 104598,
-    "status": "Ok",
-    "statusMsg": "Mashine Mashine 1 is up and running.",
-    "lastAct": "2020-06-01T16:42:00.330Z"
-  },   
-  {
-    "name": "Mashine 2",
-    "adress": "192.168.2.102",
-    "produces": "Hinges",
-    "qtyToday": 5220,
-    "qtyWeek": 86598,
-    "status": "Ok",
-    "statusMsg": "Mashine Mashine 2 is up and running.",
-    "lastAct": "2020-06-01T16:42:00.330Z"
-  },   
-  {
-    "name": "Mashine 1",
-    "adress": "192.168.2.101",
-    "produces": "Hinges",
-    "qtyToday": 940,
-    "qtyWeek": 4023,
-    "status": "Ok",
-    "statusMsg": "Mashine Mashine 3 is up and running.",
-    "lastAct": "2020-06-01T16:42:00.330Z"
-  }
-]
 
 ```
