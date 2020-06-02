@@ -11,6 +11,8 @@ blockquote {background-color: #293133; color: #f2f2f2; padding: 4px; border-left
 
 The Hyper Text Transfer Protocol ( HTTP ) is, in a nutshell, a collection of methods to send data back and forth on the internet. You will often find this type of methods in a Client - Server architecture, where the Client is usually the web browser and the Server is either a Mashine with a server software, like Apache or Nginx, running PHP, Java, C# or, as in this case, a Node instance behind a reverse proxy. Whenever a user decides to send data to the browser, he makes a **request** and then receives a **response** from the server. Understanding how the sending and receiving of data works is the goal of this training website. 
 
+![](https://www.w3schools.com/whatis/img_ajax.gif)
+
 ### The most common http methods on the web are: 
 > POST (Create), GET (Read), PUT | PATCH (Update), DELETE (Delete)
 
@@ -23,6 +25,8 @@ This website, however, does not only consist of its base URL, but of several Sub
 - Also, JSON does neither have Methods, nor does it have a Prototype. It's just data
 
 ### Route Structure
+
+![](https://i0.wp.com/technotip.com/wp-content/uploads/nodejs/routes-node-server-request-response-technotip.png?resize=538%2C294&ssl=1)
 
 To target the routes shown below, you can just place them in your browser's url field and hit enter. Then, your browser ( client ) will make a GET - request to the app ( server ) and write the raw data into your browser window. Note, however, that each of the routes that return JSON is protected by [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), means you will need to set the headers of your request before fetching data.
 
