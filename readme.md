@@ -122,5 +122,17 @@ npm install axios
 Example of how to make a get - request with axios: 
 
 ```javascript
+const axios = require("axios"); 
 
+const baseUrl = "https://system-status-one.herokuapp.com/"; 
+const mashineRoute = "mashine/one"
+
+axios.get(baseUrl + mashineRoute, {
+  /*If you read this before doing the tasks above, try to figure out where this Authorization string comes from. */
+  headers: {
+    "Authorization": "aGV0dGljaHVzZXI6d2VsY29tZTAx" 
+  }
+})
+.then(response => console.log(response.data))
+.catch(err => console.log(err.response.data));
 ```
